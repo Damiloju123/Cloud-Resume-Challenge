@@ -1,0 +1,44 @@
+AWSTemplateFormatVersion: '2010-09-09-OC'
+Description: default template generated for organization with master account 121481902589
+
+Organization:
+  ManagementAccount:
+    Type: OC::ORG::MasterAccount
+    Properties:
+      AccountName: lojucloud
+      AccountId: '121481902589'
+      RootEmail: jdamiloju@gmail.com
+      Alias: lojudevops
+
+  OrganizationRoot:
+    Type: OC::ORG::OrganizationRoot
+    Properties:
+      DefaultOrganizationAccessRoleName: OrganizationAccountAccessRole
+
+  ProductionOU:
+    Type: OC::ORG::OrganizationalUnit
+    Properties:
+      OrganizationalUnitName: production
+      Accounts: !Ref ProductionAccount
+
+  DevelopmentOU:
+    Type: OC::ORG::OrganizationalUnit
+    Properties:
+      OrganizationalUnitName: development
+      Accounts: !Ref DevelopmentAccount
+
+  DevelopmentAccount:
+    Type: OC::ORG::Account
+    Properties:
+      AccountName: Development Account
+      AccountId: '090436715855'
+      RootEmail: jdamiloju+dev@gmail.com
+
+  ProductionAccount:
+    Type: OC::ORG::Account
+    Properties:
+      AccountName: Production Account
+      AccountId: '932721589753'
+      RootEmail: jdamiloju+production@gmail.com
+
+
